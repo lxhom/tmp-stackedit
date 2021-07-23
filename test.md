@@ -1,4 +1,5 @@
 
+<!-- Don't edit this file directly, use stackedit.io and publish it with the configuration in docs/config.handlebars -->
 # Lolcat-as-a-Service (LaaS)  
 An API to lolcat (and figlet, cowsay etc. coming soon!) your text.  
   
@@ -6,7 +7,7 @@ An API to lolcat (and figlet, cowsay etc. coming soon!) your text.
 | --- | --- | --- |
   
   
-> Note for cURL users: Use https://laas.cf instead of https://LaaS.cf when using cURL because [Deta, the provider that hosts this service for free](https://deta.sh) doesn't recognize uppercase URL's and cURL sends the domain in uppercase if you type it in uppercase, unlike browsers like Chrome.
+> Note for **cURL users**: Use **https://laas.cf instead of https://LaaS.cf** when using cURL because [**Deta**, the provider that hosts this service for free](https://deta.sh) **doesn't recognize uppercase URL's** and cURL sends the domain in uppercase if you type it in uppercase, unlike browsers like Chrome.
   
 ## Lolcat  
   
@@ -16,9 +17,13 @@ Parameter | Required | Type | Effect | Default
 spread | No | float | Inclination of the rainbow stripes (character widths per line height. High values (>1000) give almost horizontal stripes, low values (0.1) almost vertical ones) | 8.0  
 freq | No | float | Frequency of the rainbow (low values around  0.0001 give almost monochrome screens) | 0.3  
 html | No | boolean | Use HTML tags instead of ANSI escape codes | false  
-text | <kbd>GET</kbd> only | string | Text to lolcat | <kbd>POST</kbd> body  
+text | <kbd>GET</kbd> only | string | Text to lolcat | <kbd>POST</kbd> body
+
+### Special query param syntax  
   
-### <kbd>POST</kbd> `/`  
+You can request <kbd>GET</kbd> `/lolcat?[text]` with ***no other query param's*** to emulate a <kbd>POST</kbd> request with the body set to `[text]`.
+  
+### Endpoint: <kbd>POST</kbd> `/`  
   
 Alias for `/lolcat`. Use this endpoint with a text post body to lolcat the text. Example:  
   
@@ -26,7 +31,7 @@ Alias for `/lolcat`. Use this endpoint with a text post body to lolcat the text.
 curl -d "$(fortune)" https://laas.cf  
 ```  
   
-### <kbd>POST/GET</kbd> `/lolcat`  
+### Endpoint: <kbd>POST/GET</kbd> `/lolcat`  
   
 Use this endpoint with a text post body or the `text` parameter to lolcat the text. Example:  
   
