@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome file</title>
+  <title>README.md</title>
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
   <style>
 .stackedit__html h1 {
@@ -47,8 +47,9 @@ table:not(.stackedit__html h1+p+table) {
 <li><a href="#lolcat">Lolcat</a>
 <ul>
 <li><a href="#query-parameters">Query parameters:</a></li>
-<li><a href="#kbdpostkbd-">POST /</a></li>
-<li><a href="#kbdpostgetkbd-lolcat">POST/GET /lolcat</a></li>
+<li><a href="#special-query-param-syntax">Special query param syntax</a></li>
+<li><a href="#endpoint-kbdpostkbd-">Endpoint: POST /</a></li>
+<li><a href="#endpoint-kbdpostgetkbd-lolcat">Endpoint: POST/GET /lolcat</a></li>
 </ul>
 </li>
 </ul>
@@ -59,7 +60,8 @@ table:not(.stackedit__html h1+p+table) {
   </div>
   <div class="stackedit__right">
     <div class="stackedit__html">
-      <h1 id="lolcat-as-a-service-laas">Lolcat-as-a-Service (LaaS)</h1>
+      <!-- Don't edit this file directly, use stackedit.io and publish it with the configuration in docs/config.handlebars -->
+<h1 id="lolcat-as-a-service-laas">Lolcat-as-a-Service (LaaS)</h1>
 <p>An API to lolcat (and figlet, cowsay etc. coming soon!) your text.</p>
 
 <table>
@@ -72,7 +74,7 @@ table:not(.stackedit__html h1+p+table) {
 </thead>
 <tbody></tbody>
 </table><blockquote>
-<p>Note for cURL users: Use <a href="https://laas.cf">https://laas.cf</a> instead of <a href="https://LaaS.cf">https://LaaS.cf</a> when using cURL because <a href="https://deta.sh">Deta, the provider that hosts this service for free</a> doesn't recognize uppercase URL's and cURL sends the domain in uppercase if you type it in uppercase, unlike browsers like Chrome.</p>
+<p>Note for <strong>cURL users</strong>: Use <strong><a href="https://laas.cf">https://laas.cf</a> instead of <a href="https://LaaS.cf">https://LaaS.cf</a></strong> when using cURL because <a href="https://deta.sh"><strong>Deta</strong>, the provider that hosts this service for free</a> <strong>doesn't recognize uppercase URL's</strong> and cURL sends the domain in uppercase if you type it in uppercase, unlike browsers like Chrome.</p>
 </blockquote>
 <h2 id="lolcat">Lolcat</h2>
 <h3 id="query-parameters">Query parameters:</h3>
@@ -117,11 +119,13 @@ table:not(.stackedit__html h1+p+table) {
 <td><kbd>POST</kbd> body</td>
 </tr>
 </tbody>
-</table><h3 id="kbdpostkbd-"><kbd>POST</kbd> <code>/</code></h3>
+</table><h3 id="special-query-param-syntax">Special query param syntax</h3>
+<p>You can request <kbd>GET</kbd> <code>/lolcat?[text]</code> with <em><strong>no other query param's</strong></em> to emulate a <kbd>POST</kbd> request with the body set to <code>[text]</code>.</p>
+<h3 id="endpoint-kbdpostkbd-">Endpoint: <kbd>POST</kbd> <code>/</code></h3>
 <p>Alias for <code>/lolcat</code>. Use this endpoint with a text post body to lolcat the text. Example:</p>
 <pre class=" language-shell"><code class="prism  language-shell">curl -d "$(fortune)" https://laas.cf  
 </code></pre>
-<h3 id="kbdpostgetkbd-lolcat"><kbd>POST/GET</kbd> <code>/lolcat</code></h3>
+<h3 id="endpoint-kbdpostgetkbd-lolcat">Endpoint: <kbd>POST/GET</kbd> <code>/lolcat</code></h3>
 <p>Use this endpoint with a text post body or the <code>text</code> parameter to lolcat the text. Example:</p>
 <pre class=" language-shell"><code class="prism  language-shell">curl -d "$(fortune)" https://laas.cf/lolcat # or  
 curl "https://laas.cf/lolcat?text=$(fortune | urlencode)"  
